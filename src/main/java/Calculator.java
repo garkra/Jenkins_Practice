@@ -63,7 +63,7 @@ class Calculator {
     String createUniqueID(String n) {
         StringBuilder sb = new StringBuilder();
         sb.append(n);
-        sb.append(getAlphaNumericString(ThreadLocalRandom.current().nextInt(10,71)));
+        sb.append(getAlphaNumericString(ThreadLocalRandom.current().nextInt(10,81)));
 
         return sb.toString();
     }
