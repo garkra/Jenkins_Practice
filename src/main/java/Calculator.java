@@ -2,8 +2,6 @@ import java.util.concurrent.ThreadLocalRandom;
 
 class Calculator {
 
-    Here's a breaking change!
-
     Calculator() {
 
     }
@@ -65,7 +63,7 @@ class Calculator {
     String createUniqueID(String n) {
         StringBuilder sb = new StringBuilder();
         sb.append(n);
-        sb.append(getAlphaNumericString(ThreadLocalRandom.current().nextInt(10,81)));
+        sb.append(getAlphaNumericString(ThreadLocalRandom.current().nextInt(10, 81)));
 
         return sb.toString();
     }
@@ -79,7 +77,6 @@ class Calculator {
             sb.append(alphaNumerString.charAt(index));
         }
         return sb.toString();
-
 
     }
 
