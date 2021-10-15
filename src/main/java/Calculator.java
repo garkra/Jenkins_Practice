@@ -2,6 +2,8 @@ import java.util.concurrent.ThreadLocalRandom;
 
 class Calculator {
 
+    Here's a breaking change!
+
     Calculator() {
 
     }
