@@ -1,50 +1,39 @@
+import java.util.concurrent.ThreadLocalRandom;
 
 class Calculator {
 
-    Calculator(){
+    Calculator() {
 
     }
 
-    int add(int a , int b){
+    int add(int a, int b) {
         return a + b;
     }
 
-    int subtract(int a , int b){
+    int subtract(int a, int b) {
         return a - b;
     }
 
-    int multiply(int a , int b){
+    int multiply(int a, int b) {
         return a * b;
     }
 
-    int divide(int a , int b){
+    int divide(int a, int b) {
         return a / b;
     }
 
-
     /*
-    Returns the n'th number in the fibonacci sequence
-    https://en.wikipedia.org/wiki/Fibonacci_number
-    Example below
-    n = x
-    0 = 0
-    1 = 1
-    2 = 1
-    3 = 2
-    4 = 3
-    5 = 5
-    .
-    .
-    .
-    etc
+     * Returns the n'th number in the fibonacci sequence
+     * https://en.wikipedia.org/wiki/Fibonacci_number Example below n = x 0 = 0 1 =
+     * 1 2 = 1 3 = 2 4 = 3 5 = 5 . . . etc
      */
-    int fibonacciNumberFinder(int n){
+    int fibonacciNumberFinder(int n) {
         int num1 = 0, num2 = 1;
 
         int counter = 0;
 
-        //Iterate until counter is n
-        while (counter < n){
+        // Iterate until counter is n
+        while (counter < n) {
             int num3 = num2 + num1;
             num1 = num2;
             num2 = num3;
@@ -53,30 +42,42 @@ class Calculator {
         return num1;
     }
 
-
     /*
-    Returns binary value of the given int number
-    The binary number will be stored as a string
-    if int a = 0 then this method returns: 0
-    if int a = 10 then this method returns: 1010
-    if int a = 16 then this method returns: 10000
+     * Returns binary value of the given int number The binary number will be stored
+     * as a string if int a = 0 then this method returns: 0 if int a = 10 then this
+     * method returns: 1010 if int a = 16 then this method returns: 10000
      */
-    String intToBinaryNumber(int n){
+    String intToBinaryNumber(int n) {
         return Integer.toBinaryString(n);
     }
 
     /*
-    Create a completely unique String identifier for a given string
-    Each createdID must contain the string n in its unaltered Form
-    if String n = "Jason"
-    then the created ID could be = Jasonklfgn3jknnvksdfm - Because it contains the unaltered String n and is unique
-
-    if you run this function twice with the same String input, it must return 2 unique String IDs
+     * Create a completely unique String identifier for a given string Each
+     * createdID must contain the string n in its unaltered Form if String n =
+     * "Jason" then the created ID could be = Jasonklfgn3jknnvksdfm - Because it
+     * contains the unaltered String n and is unique
+     * 
+     * if you run this function twice with the same String input, it must return 2
+     * unique String IDs
      */
-    String createUniqueID(String n){
+    String createUniqueID(String n) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(n);
+        sb.append(getAlphaNumericString(ThreadLocalRandom.current().nextInt(10,51)));
 
-        return null;
+        return sb.toString();
     }
 
+    static String getAlphaNumericString(int n) {
+        String alphaNumerString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" + "01234567489" + "abcdefghijklmnopqrstuvwxyz";
+        StringBuilder sb = new StringBuilder(n);
+
+        for (int i = 0; i < n; i++) {
+            int index = (int) (alphaNumerString.length() * Math.random());
+            sb.append(alphaNumerString.charAt(index));
+        }
+        return sb.toString();
+
+    }
 
 }
